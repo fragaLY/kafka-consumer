@@ -12,9 +12,6 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-  jpa:
-    show-sql: true
-    open-in-view: false
   data:
     jpa:
       repositories:
@@ -27,10 +24,19 @@ spring:
         web-allow-others: true
   lifecycle:
     timeout-per-shutdown-phase: 60s
+  kafka:
+    listener:
+      ack-mode: MANUAL
+      concurrency: 5
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: notification-events-listener-group
 
 # server specific properties
 server:
-  port: 8080
+  port: 8081
   shutdown: graceful
   servlet:
     session:

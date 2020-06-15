@@ -3,9 +3,10 @@ package com.kafka.consumer.demo
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+/** @author Vadzim_Kavalkou */
 @SpringBootApplication
-class DemoApplication
+class NotificationConsumer
 
 fun main(args: Array<String>) {
-	runApplication<DemoApplication>(*args)
+	runApplication<NotificationConsumer>(*args)
 }
