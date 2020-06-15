@@ -22,16 +22,11 @@ repositories {
 	mavenCentral()
 }
 
-object DependencyVersions {
-	const val ORIKA = "1.9.0"
-}
-
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web") {
 		exclude("org.springframework.boot", "spring-boot-starter-tomcat")
 	}
-	implementation("net.rakugakibox.spring.boot:orika-spring-boot-starter:${DependencyVersions.ORIKA}")
 	implementation("org.springframework.boot:spring-boot-starter-jetty")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
