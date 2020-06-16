@@ -1,8 +1,10 @@
 package com.kafka.consumer.demo.notification
 
+import org.slf4j.LoggerFactory
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
+import org.springframework.util.ErrorHandler
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -31,4 +33,13 @@ class NotificationService(private val repository: NotificationH2Repository) {
         if (notification.id == null) throw IllegalArgumentException("The notification should not be null for update request")
         else repository.findById(notification.id!!).orElseThrow { RuntimeException("Notification not found") }
             .run { repository.save(notification) }
+}
+
+class ErrorHandlingLogger : ErrorHandler {
+
+    private val logger = LoggerFactory.getLogger(javaClass)
+
+    override fun handleError(exception: Throwable) {
+        logger.error("[CONSUMER] $exception")
+    }
 }

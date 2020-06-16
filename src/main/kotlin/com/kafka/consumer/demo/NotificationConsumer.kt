@@ -10,5 +10,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 class NotificationConsumer
 
 fun main(args: Array<String>) {
-	runApplication<NotificationConsumer>(*args)
+    runApplication<NotificationConsumer>(*args)
 }
