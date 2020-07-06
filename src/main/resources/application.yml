@@ -25,9 +25,6 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 60s
   kafka:
-    listener:
-      ack-mode: MANUAL
-      concurrency: 5
     consumer:
       bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
       key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
